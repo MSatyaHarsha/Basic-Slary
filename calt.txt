@@ -1,0 +1,59 @@
+import java.util.*;
+class Main
+{
+	public static void main(String[] args)
+	{
+		Scanner sc = new Scanner(System.in);
+		String nam;
+		char gen;
+		float basic,exp;
+		float increment=0,pf=0,bonus=0;
+		System.out.println("Enter the Employee name: ");
+		nam = sc.nextLine();
+		System.out.println("Enter the experience of employee in years: ");
+		exp = sc.nextInt();
+		System.out.println("Enter Gender of employee: ");
+		gen = sc.next().charAt(0);
+		System.out.println("Enter the basic salary of employee: ");
+		basic = sc.nextFloat();
+		if(basic<1000) System.out.println("Wrong amount of Salary Enetered");
+		else
+		{
+			if(40>=exp&&exp>=5)
+			{
+				switch(gen)
+				{
+				    case 'm':case 'M': increment = basic*3/10;
+				                       pf = basic/10;
+				                       bonus = basic*21/100;break;
+				    case 'f':case 'F': increment = basic*2/5;
+				                       pf = basic*3/20;
+				                       bonus = basic*23/100;break;
+				    default: System.out.println("Invalid option");               
+				}
+			}
+			else if(0<exp&&exp<5)
+			{
+				switch(gen)
+				{
+				    case 'm':case 'M': increment = basic/4;
+				                       pf = basic*7/100;
+				                       bonus = basic*9/50;break;
+				    case 'f':case 'F': increment = basic*8/25;
+				                       pf = basic/10;
+				                       bonus = basic/5;break; 
+				    default: System.out.println("Invalid option");                   
+				}
+			}
+			if(increment==0)
+			{
+			    System.out.println("Invalid exp");
+			}
+			else
+			{
+			    float total = basic + increment - pf + bonus ;
+			    System.out.println(" NAME : "+nam+"\n Basic Salary: "+basic+"\n Increment: "+increment+"\n Post-Fund: "+pf+"\n Bonus: "+bonus+"\n TOTAL SALARY: "+total);
+			}
+		}
+	}
+}
